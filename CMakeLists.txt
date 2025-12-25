@@ -15,8 +15,13 @@ project(aoc_2025 CXX)
 add_compile_options(-stdlib=libc++)
 add_link_options(-stdlib=libc++)
 
-add_executable(day1 day1/day1.1.cpp)
-add_executable(day2 day1/day1.2.cpp)
+add_executable(day1.1 day1/day1.1.cpp)
+add_executable(day1.2 day1/day1.2.cpp)
+
+add_executable(day2.1 day2/day2.1.cpp)
+add_executable(day2.2 day2/day2.2.cpp)
+
+add_executable(day3.1 day3/day3.1.cpp)
 #target_link_libraries(day1 PRIVATE aoc_common)
 
 #target_compile_options(aoc_2025 PRIVATE -stdlib=libc++)

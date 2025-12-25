@@ -9,9 +9,8 @@
 int STARTING_POSITION = 50;
 int DEFAULT_DIAL_SIZE = 100;
 
-[[nodiscard]] constexpr auto rotate(const int start, const int shift, const int modulo) -> int {
-    const auto result = (start + shift) % modulo;
-    return result < 0 ? result + modulo : result;
+[[nodiscard]] constexpr auto rotate(const int start, const int shift, const int modulus) -> int {
+    return modulo(start + shift, modulus);
 }
 
 [[nodiscard]] auto parse_rotation(const std::string_view line) -> int {
