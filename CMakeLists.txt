@@ -23,4 +23,7 @@ add_executable(day2.2 day2/day2.2.cpp)
 
 add_executable(day3.1 day3/day3.1.cpp)
 add_executable(day3.2 day3/day3.2.cpp)
+
+add_executable(day4.1 day4/day4.1.cpp)
+add_executable(day4.2 day4/day4.2.cpp)
 #target_link_libraries(day1 PRIVATE aoc_common)

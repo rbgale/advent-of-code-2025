@@ -2,6 +2,7 @@
 
 #include <filesystem>
 #include <fstream>
+#include <unordered_set>
 
 inline auto open_input(const std::filesystem::path& source_file) -> std::ifstream {
     const auto path = std::filesystem::path{source_file}.parent_path() / "input.txt";
@@ -20,4 +21,8 @@ inline auto modulo(const int value, const int modulus) -> int {
     return result < 0 ? result + modulus : result;
 }
 
-
+struct PairHash {
+    size_t operator()(const std::pair<int, int>& p) const {
+        return std::hash<int>{}(p.first) ^ (std::hash<int>{}(p.second) << 1);
+    }
+};
