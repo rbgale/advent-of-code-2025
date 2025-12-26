@@ -10,17 +10,17 @@
     std::vector<std::pair<long, long>> id_ranges;
 
     {
-        auto f = AOC_INPUT();
+        auto f{AOC_INPUT()};
         std::string line;
 
         while (std::getline(f, line)) {
-            std::istringstream lineStream{line};
+            std::istringstream line_stream{line};
             std::string token;
 
-            while (std::getline(lineStream, token, ',')) {
-                long first = 0;
-                long second = 0;
-                char dash = '\0';
+            while (std::getline(line_stream, token, ',')) {
+                long first{};
+                long second{};
+                char dash{};
                 std::istringstream{token} >> first >> dash >> second;
 
                 id_ranges.emplace_back(first, second);
@@ -32,22 +32,21 @@
 }
 
 [[nodiscard]] auto all_parts_equal(const std::string& id_string, const int num_parts) -> bool {
-    const auto n = id_string.length();
+    const auto n{id_string.length()};
 
     if (modulo(static_cast<int>(n), num_parts) != 0) return false;
 
-    const int d = static_cast<int>(n) / num_parts;
+    const int d{static_cast<int>(n) / num_parts};
 
-    for (auto i = d; i < n; i += d) {
+    for (auto i{d}; i < n; i += d)
         if (id_string.compare(i, d, id_string, 0, d) != 0)
             return false;
-    }
 
     return true;
 }
 
 [[nodiscard]] auto sum_invalid_range(const long start, const long end) -> long {
-    long total = 0;
+    long total{};
 
     for (const auto product_id : std::ranges::views::iota(start, end + 1)) {
         const auto id_string = std::to_string(product_id);
@@ -63,7 +62,7 @@
 }
 
 [[nodiscard]] auto sum_invalid() -> long {
-    long total = 0;
+    long total{};
 
     for (auto [start, end] : get_ids())
         total += sum_invalid_range(start, end);
