@@ -9,22 +9,20 @@
 [[nodiscard]] auto get_ids() -> std::vector<std::pair<long, long>> {
     std::vector<std::pair<long, long>> id_ranges;
 
-    {
-        auto f{AOC_INPUT()};
-        std::string line;
+    auto f{AOC_INPUT()};
+    std::string line;
 
-        while (std::getline(f, line)) {
-            std::istringstream line_stream{line};
-            std::string token;
+    while (std::getline(f, line)) {
+        std::istringstream line_stream{line};
+        std::string token;
 
-            while (std::getline(line_stream, token, ',')) {
-                long first{};
-                long second{};
-                char dash{};
-                std::istringstream{token} >> first >> dash >> second;
+        while (std::getline(line_stream, token, ',')) {
+            long first{};
+            long second{};
+            char dash{};
+            std::istringstream{token} >> first >> dash >> second;
 
-                id_ranges.emplace_back(first, second);
-            }
+            id_ranges.emplace_back(first, second);
         }
     }
 

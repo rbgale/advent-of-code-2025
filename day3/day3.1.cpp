@@ -7,15 +7,13 @@
 [[nodiscard]] auto get_banks() -> std::vector<std::vector<int>> {
     std::vector<std::vector<int>> banks;
 
-    {
-        auto f{AOC_INPUT()};
-        std::string line;
+    auto f{AOC_INPUT()};
+    std::string line;
 
-        while (std::getline(f, line)) {
-            banks.emplace_back();
-            for (const char jolt : line)
-                banks.back().push_back(jolt - '0');
-        }
+    while (std::getline(f, line)) {
+        banks.emplace_back();
+        for (const char jolt : line)
+            banks.back().push_back(jolt - '0');
     }
 
     return banks;

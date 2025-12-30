@@ -8,15 +8,13 @@ int ACCESS_THRESHOLD{3};
 [[nodiscard]] auto get_roll_grid() -> std::vector<std::vector<char>> {
     std::vector<std::vector<char>> roll_grid;
 
-    {
-        auto f{AOC_INPUT()};
-        std::string line;
+    auto f{AOC_INPUT()};
+    std::string line;
 
-        while (std::getline(f, line)) {
-            roll_grid.emplace_back();
-            for (const char roll : line)
-                roll_grid.back().push_back(roll);
-        }
+    while (std::getline(f, line)) {
+        roll_grid.emplace_back();
+        for (const char roll : line)
+            roll_grid.back().push_back(roll);
     }
 
     return roll_grid;

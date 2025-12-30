@@ -38,26 +38,24 @@ std::set<Range> mergeRanges(std::vector<Range> ranges) {
 [[nodiscard]] auto get_ranges_and_values() -> ParsedData {
     ParsedData data;
 
-    {
-        auto f{AOC_INPUT()};
-        std::string line;
+    auto f{AOC_INPUT()};
+    std::string line;
 
-        std::vector<Range> unordered_ranges;
+    std::vector<Range> unordered_ranges;
 
-        while (std::getline(f, line) && !line.empty()) {
-            std::istringstream line_stream{line};
-            std::pair<id, id> range;
-            char dash{};
-            line_stream >> range.first >> dash >> range.second;
+    while (std::getline(f, line) && !line.empty()) {
+        std::istringstream line_stream{line};
+        std::pair<id, id> range;
+        char dash{};
+        line_stream >> range.first >> dash >> range.second;
 
-            unordered_ranges.emplace_back(range);
-        }
-
-        data.ranges = mergeRanges(unordered_ranges);
-
-        while (std::getline(f, line))
-            data.ids.push_back(std::stoll(line));
+        unordered_ranges.emplace_back(range);
     }
+
+    data.ranges = mergeRanges(unordered_ranges);
+
+    while (std::getline(f, line))
+        data.ids.push_back(std::stoll(line));
 
     return data;
 }

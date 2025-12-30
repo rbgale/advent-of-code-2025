@@ -36,12 +36,10 @@ int DEFAULT_DIAL_SIZE{100};
 [[nodiscard]] auto get_rotations() -> std::vector<int> {
     std::vector<int> rotations;
 
-    {
-        auto f{AOC_INPUT()};
-        std::string line;
-        while (std::getline(f, line))
-            rotations.push_back(parse_rotation(line));
-    }
+    auto f{AOC_INPUT()};
+    std::string line;
+    while (std::getline(f, line))
+        rotations.push_back(parse_rotation(line));
 
     return rotations;
 }

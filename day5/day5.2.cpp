@@ -31,27 +31,21 @@ std::set<Range> mergeRanges(std::vector<Range> ranges) {
 }
 
 [[nodiscard]] auto get_ranges_and_values() -> std::set<std::pair<id, id>> {
-    std::set<std::pair<id, id>> ranges;
+    auto f{AOC_INPUT()};
+    std::string line;
 
-    {
-        auto f{AOC_INPUT()};
-        std::string line;
+    std::vector<Range> unordered_ranges;
 
-        std::vector<Range> unordered_ranges;
+    while (std::getline(f, line) && !line.empty()) {
+        std::istringstream line_stream{line};
+        std::pair<id, id> range;
+        char dash{};
+        line_stream >> range.first >> dash >> range.second;
 
-        while (std::getline(f, line) && !line.empty()) {
-            std::istringstream line_stream{line};
-            std::pair<id, id> range;
-            char dash{};
-            line_stream >> range.first >> dash >> range.second;
-
-            unordered_ranges.emplace_back(range);
-        }
-
-        ranges = mergeRanges(unordered_ranges);
+        unordered_ranges.emplace_back(range);
     }
 
-    return ranges;
+    return mergeRanges(unordered_ranges);
 }
 
 [[nodiscard]] auto is_in_ranges(const std::set<Range>& ranges, const long long id) -> bool {
