@@ -23,8 +23,7 @@ struct OperationGroup {
         if (j >= grid[i].size())
             throw std::out_of_range("Column index out of range");
 
-        if (std::isdigit(grid[i][j]))
-            return true;
+        if (std::isdigit(grid[i][j])) return true;
     }
 
     return false;
@@ -33,11 +32,9 @@ struct OperationGroup {
 [[nodiscard]] auto get_vertical_number(const auto& grid, const auto j) -> long {
     long vertical_number{};
 
-    for (auto i{0uz}; i < grid.size() - 1; ++i) { // skip last row (not a number)
-        if (std::isdigit(grid[i][j])) {
+    for (auto i{0uz}; i < grid.size() - 1; ++i) // skip last row (not a number)
+        if (std::isdigit(grid[i][j]))
             vertical_number = 10 * vertical_number + grid[i][j] - '0';
-        }
-    }
 
     return vertical_number;
 }
@@ -46,18 +43,15 @@ struct OperationGroup {
     std::vector<OperationGroup> operation_groups;
 
     const auto operation_index{grid.size() - 1};
-    const auto count_digits{operation_index};
     const auto count_columns{std::ranges::max(grid | std::views::transform(&std::string::size))};
     auto j{0uz};
 
     while (j < count_columns) {
-        const Operation_t operation{static_cast<Operation_t>(grid[operation_index][j])};
+        const auto operation{static_cast<Operation_t>(grid[operation_index][j])};
         std::vector<long> vertical_numbers;
 
-        while (j < count_columns && is_nonempty_column(grid, j)) {
-            vertical_numbers.push_back(get_vertical_number(grid, j));
-            j++;
-        }
+        while (j < count_columns && is_nonempty_column(grid, j))
+            vertical_numbers.push_back(get_vertical_number(grid, j++));
         j++;
 
         operation_groups.emplace_back(operation, std::move(vertical_numbers));
@@ -84,9 +78,9 @@ struct OperationGroup {
 
     for (const auto& [operation, numbers] : operation_vector_pairs) {
         if (operation == Operation_t::Plus)
-            total += std::ranges::fold_left(numbers, 0, std::plus());
+            total += std::ranges::fold_left(numbers, 0, std::plus{});
         else
-            total += std::ranges::fold_left(numbers, 1, std::multiplies());
+            total += std::ranges::fold_left(numbers, 1, std::multiplies{});
     }
 
     return total;
