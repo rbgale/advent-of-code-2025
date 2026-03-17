@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 #include <functional>
-#include <ostream>
+#include <print>
 #include "../common.h"
 
 using operation = char;

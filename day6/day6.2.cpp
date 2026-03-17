@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <functional>
-#include <ostream>
+#include <print>
 #include <ranges>
 #include "../common.h"
 

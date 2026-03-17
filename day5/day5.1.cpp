@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <ostream>
+#include <print>
 #include <set>
 #include <sstream>
 #include <vector>

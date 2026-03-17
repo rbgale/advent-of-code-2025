@@ -1,4 +1,4 @@
-#include <ostream>
+#include <print>
 #include <unordered_set>
 #include <vector>
 #include "../common.h"

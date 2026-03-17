@@ -1,4 +1,4 @@
-#include <ostream>
+#include <print>
 #include <vector>
 #include "../common.h"
 

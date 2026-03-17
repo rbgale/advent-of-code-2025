@@ -1,4 +1,4 @@
-#include <ostream>
+#include <print>
 #include <vector>
 #include <ranges>
 #include "../common.h"
