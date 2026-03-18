@@ -21,8 +21,18 @@ inline auto modulo(const int value, const int modulus) -> int {
     return result < 0 ? result + modulus : result;
 }
 
+// hashing method is from boost::hash_combine
+template <typename T>
+auto hash_combine(size_t& seed, const T& val) -> void {
+    seed ^= std::hash<T>{}(val) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+}
+
 struct PairHash {
     size_t operator()(const std::pair<int, int>& p) const {
-        return std::hash<int>{}(p.first) ^ (std::hash<int>{}(p.second) << 1);
+        size_t seed = 0;
+        hash_combine(seed, p.first);
+        hash_combine(seed, p.second);
+
+        return seed;
     }
 };
