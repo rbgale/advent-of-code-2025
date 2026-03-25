@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 4.2.1)
 
 #set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS ON CACHE BOOL "" FORCE)
+
+set(LLVM_PREFIX "/opt/homebrew/Cellar/llvm/21.1.8")
+add_link_options("-L${LLVM_PREFIX}/lib/c++" "-Wl,-rpath,${LLVM_PREFIX}/lib/c++")
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -44,4 +48,7 @@ add_executable(day9.2 day9/day9.2.cpp)
 
 add_executable(day10.1 day10/day10.1.cpp)
 add_executable(day10.2 day10/day10.2.cpp)
+
+add_executable(day11.1 day11/day11.1.cpp)
+add_executable(day11.2 day11/day11.2.cpp)
 #target_link_libraries(day1 PRIVATE aoc_common)
