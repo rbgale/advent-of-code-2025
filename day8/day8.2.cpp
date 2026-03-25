@@ -69,8 +69,8 @@ private:
 
 template<>
 struct std::hash<Point> {
-    std::size_t operator()(const Point& t) const noexcept {
-        std::size_t seed = 0;
+    auto operator()(const Point& t) const noexcept -> std::size_t{
+        std::size_t seed{0};
         hash_combine(seed, t.x);
         hash_combine(seed, t.y);
         hash_combine(seed, t.z);
